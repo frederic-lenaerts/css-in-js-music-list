@@ -1,0 +1,102 @@
+[
+  {
+    "name": "Pop",
+    "albums": [
+      {
+        "artist": "Grimes",
+        "name": "Art Angels",
+        "cover": "images/grimes-artangels.jpg"
+      },
+      {
+        "artist": "Lady Gaga",
+        "name": "Joanne",
+        "cover": "images/ladygaga-joanne.png"
+      },
+      {
+        "artist": "Vampire Weekend",
+        "name": "Contra",
+        "cover": "images/vampireweekend-contra.jpeg"
+      },
+      {
+        "artist": "David Bowie",
+        "name": "Best of Bowie",
+        "cover": "images/davidbowie-bestofbowie.jpg"
+      },
+      {
+        "artist": "Billie Eilish",
+        "name": "WHEN WE ALL FALL ASLEEP, WHERE DO WE GO?",
+        "cover": "images/billieeilish-whenweallfallasleepwheredowego.jpg"
+      }
+    ]
+  },
+  {
+    "name": "Singer-songwriter",
+    "albums": [
+      {
+        "artist": "John Grant",
+        "name": "Queen of Denmark",
+        "cover": ".png"
+      },
+      {
+        "artist": "Laura Marling",
+        "name": "I Speak Because I Can",
+        "cover": ".png"
+      },
+      {
+        "artist": "Martha Wainwright",
+        "name": "Martha Wainwright",
+        "cover": ".png"
+      },
+      {
+        "artist": "Tom Waits",
+        "name": "Closing Time",
+        "cover": ".png"
+      }
+    ]
+  },
+  {
+    "name": "Alt+Rock",
+    "albums": [
+      {
+        "artist": "Red Hot Chili Peppers",
+        "name": "Californication",
+        "cover": ".png"
+      },
+      {
+        "artist": "Royal Blood",
+        "name": "How Did We Get So Dark?",
+        "cover": ".png"
+      },
+      {
+        "artist": "Lou Reed",
+        "name": "Transformer",
+        "cover": ".png"
+      },
+      {
+        "artist": "The Kills",
+        "name": "Midnight Bloom",
+        "cover": ".png"
+      }
+    ]
+  },
+  {
+    "name": "Metal",
+    "albums": [
+      {
+        "artist": "Disturbed",
+        "name": "Immortalized",
+        "cover": ".png"
+      },
+      {
+        "artist": "Metallica",
+        "name": "Metallica",
+        "cover": ".png"
+      },
+      {
+        "artist": "Audioslave",
+        "name": "Audioslave",
+        "cover": ".png"
+      }
+    ]
+  }
+]
