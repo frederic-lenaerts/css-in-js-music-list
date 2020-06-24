@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react'
 import type { Album } from '../../models'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 export interface CardProps {
   color: string
@@ -13,19 +13,37 @@ export default function Card(props: CardProps): ReactElement {
       <Background color={props.color} />
       <Cover uri={props.album.cover}></Cover>
       <Info color={props.color}>
-        <Artist>{props.album.artist}</Artist>
-        <AlbumName>{props.album.name}</AlbumName>
+        <Artist>
+          <span>{props.album.artist}</span>
+        </Artist>
+        <AlbumName>
+          <span>{props.album.name}</span>
+        </AlbumName>
       </Info>
     </Root>
   )
 }
 
-const Artist = styled.p``
+const Artist = styled.p`
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  margin-block-end: 0.5em;
+  text-align: center;
+  justify-content: flex-end;
+`
 
-const AlbumName = styled.p``
+const AlbumName = styled.p`
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  margin-block-start: 0.5em;
+  text-align: center;
+  justify-content: flex-start;
+`
 
 const Cover = styled.div<{ uri: string }>`
-  margin: 5px 0 0 5px;
+  margin: 8px 0 0 8px;
 
   &:after {
     position: relative;
@@ -44,8 +62,8 @@ const Background = styled.div<{ color: string }>`
 
   position: absolute;
   top: 0;
-  right: 5px;
-  bottom: 5px;
+  right: 16px;
+  bottom: 16px;
   left: 0;
 `
 const Info = styled.div<{ color: string }>`
@@ -54,8 +72,8 @@ const Info = styled.div<{ color: string }>`
 
   position: absolute;
   top: 0;
-  right: 5px;
-  bottom: 5px;
+  right: 16px;
+  bottom: 16px;
   left: 0;
 
   opacity: 0;
@@ -72,25 +90,25 @@ const Root = styled.div`
 
   &:hover {
     ${Background} {
-      transition: all 0.5s ease-out 0.1s;
-      top: 5px;
+      transition: all 0.5s ease-out;
+      top: 8px;
       right: 0;
       bottom: 0;
-      left: 5px;
+      left: 8px;
     }
 
     ${Info} {
-      transition: all 0.5s ease-out 0.1s;
-      top: 5px;
+      transition: all 0.5s ease-out;
+      top: 8px;
       right: 0;
       bottom: 0;
-      left: 5px;
+      left: 8px;
       opacity: 1;
     }
 
     ${Cover} {
       transition: all 0.5s ease-out;
-      margin: 0 5px 5px 0;
+      margin: 0 16px 16px 0;
     }
   }
 `
