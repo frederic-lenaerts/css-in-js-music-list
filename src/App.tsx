@@ -4,17 +4,16 @@ import { Header } from './components/header'
 import data from './assets/data.json'
 import { Genre } from './models'
 import { Card } from './components/card'
+import theme from './theme'
+
+const colors = [theme.yellow[3], theme.green[3], theme.cyan[3], theme.pink[3]]
 
 export default function App() {
   const [selectedGenre, setSelectedGenre] = React.useState(data[0])
-  const [color, setColor] = React.useState('#f783ac')
+  const [color, setColor] = React.useState(colors[0])
 
-  function selectGenre(genre: Genre) {
-    // setColor(
-    //   defaultColors.filter((x) => x !== color)[
-    //     Math.floor(Math.random() * (defaultColors.length - 1))
-    //   ]
-    // )
+  function onClick(genre: Genre, color: string) {
+    setColor(color)
     setSelectedGenre(genre)
   }
 
@@ -24,14 +23,14 @@ export default function App() {
         <Title>{selectedGenre.name}</Title>
         <Navigation>
           <Menu>
-            {data.map((genre) => (
-              <MenuItem key={genre.name}>
-                <ItemButton
-                  onClick={() => selectGenre(genre)}
-                  selected={selectedGenre?.name === genre.name}
-                >
-                  {genre.name}
-                </ItemButton>
+            {data.map((genre, index) => (
+              <MenuItem
+                key={genre.name}
+                role="button"
+                onClick={() => onClick(genre, colors[index])}
+                selected={selectedGenre === genre}
+              >
+                {genre.name}
               </MenuItem>
             ))}
           </Menu>
@@ -76,15 +75,7 @@ const Menu = styled.ul`
   margin-right: 4em;
 `
 
-const MenuItem = styled.li``
-
-const ItemButton = styled.button<{ selected: boolean }>`
-  background: none;
-  color: inherit;
-  border: none;
-  font: inherit;
-  cursor: pointer;
-  outline: inherit;
+const MenuItem = styled.li<{ selected: boolean }>`
   padding: 1em 2em;
   text-transform: uppercase;
   ${(props) =>
