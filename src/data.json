@@ -24,7 +24,7 @@
       },
       {
         "artist": "Billie Eilish",
-        "name": "WHEN WE ALL FALL ASLEEP, WHERE DO WE GO?",
+        "name": "When We All Fall Asleep, Where Do We Go?",
         "cover": "images/billieeilish-whenweallfallasleepwheredowego.jpg"
       }
     ]
@@ -35,22 +35,22 @@
       {
         "artist": "John Grant",
         "name": "Queen of Denmark",
-        "cover": ".png"
+        "cover": "images/johngrant-queenofdenmark.jpg"
       },
       {
         "artist": "Laura Marling",
         "name": "I Speak Because I Can",
-        "cover": ".png"
+        "cover": "images/lauramarling-ispeakbecauseican.jpg"
       },
       {
         "artist": "Martha Wainwright",
         "name": "Martha Wainwright",
-        "cover": ".png"
+        "cover": "images/marthawainwright.jpg"
       },
       {
         "artist": "Tom Waits",
         "name": "Closing Time",
-        "cover": ".png"
+        "cover": "images/tomwaits-closingtime.jpg"
       }
     ]
   },
@@ -60,22 +60,22 @@
       {
         "artist": "Red Hot Chili Peppers",
         "name": "Californication",
-        "cover": ".png"
+        "cover": "images/redhotchilipeppers-californication.jpg"
       },
       {
         "artist": "Royal Blood",
         "name": "How Did We Get So Dark?",
-        "cover": ".png"
+        "cover": "images/royalblood-howdidwegetsodark.jpg"
       },
       {
         "artist": "Lou Reed",
         "name": "Transformer",
-        "cover": ".png"
+        "cover": "images/loureed-transformer.jpg"
       },
       {
         "artist": "The Kills",
-        "name": "Midnight Bloom",
-        "cover": ".png"
+        "name": "Midnight Boom",
+        "cover": "images/thekills-midnightboom.jpeg"
       }
     ]
   },
@@ -85,17 +85,17 @@
       {
         "artist": "Disturbed",
         "name": "Immortalized",
-        "cover": ".png"
+        "cover": "images/.jpg"
       },
       {
         "artist": "Metallica",
         "name": "Metallica",
-        "cover": ".png"
+        "cover": "images/.jpg"
       },
       {
         "artist": "Audioslave",
         "name": "Audioslave",
-        "cover": ".png"
+        "cover": "images/.jpg"
       }
     ]
   }

@@ -1,10 +1,10 @@
+import { Card } from 'components/card'
+import { Genre } from 'models'
 import React from 'react'
-import styled, { css } from 'styled-components'
-import { Header } from './components/header'
-import data from './assets/data.json'
-import { Genre } from './models'
-import { Card } from './components/card'
-import theme from './theme'
+import styled, { css, keyframes } from 'styled-components'
+import theme from 'theme'
+
+import data from './data.json'
 
 const colors = [theme.yellow[3], theme.green[3], theme.cyan[3], theme.pink[3]]
 
@@ -19,7 +19,7 @@ export default function App() {
 
   return (
     <>
-      <Header color={color}>
+      <Header background={color}>
         <Title>{selectedGenre.name}</Title>
         <Navigation>
           <Menu>
@@ -28,7 +28,8 @@ export default function App() {
                 key={genre.name}
                 role="button"
                 onClick={() => onClick(genre, colors[index])}
-                selected={selectedGenre === genre}
+                color={colors[index]}
+                isSelected={selectedGenre === genre}
               >
                 {genre.name}
               </MenuItem>
@@ -36,7 +37,7 @@ export default function App() {
           </Menu>
         </Navigation>
       </Header>
-      <Body>
+      <Body key={selectedGenre.name}>
         {selectedGenre.albums.map((album) => (
           <Card key={album.artist + album.name} album={album} color={color} />
         ))}
@@ -45,11 +46,21 @@ export default function App() {
   )
 }
 
+const Header = styled.div<{ background: string }>`
+  background: ${(props) => props.background};
+`
+
+const fadeIn = keyframes`
+   0% {opacity: 0;}
+   100% {opacity: 1;}
+`
+
 const Body = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-gap: 5vmin;
-  padding: 5vw;
+  grid-gap: 2rem;
+  padding: 3rem;
+  animation: ${fadeIn} 0.5s cubic-bezier(1, 0, 0, 1) forwards;
 `
 
 const Title = styled.h1`
@@ -57,13 +68,14 @@ const Title = styled.h1`
   margin-block-end: 0;
   text-transform: uppercase;
   margin: -0.5em 0 -1em;
-  padding: 1em 1em 0.5em;
+  padding: 1em 1em 0;
 `
 
 const Navigation = styled.nav`
   width: 100%;
   display: inline-flex;
   justify-content: flex-end;
+  z-index: 20;
 `
 
 const Menu = styled.ul`
@@ -72,16 +84,17 @@ const Menu = styled.ul`
   margin-block-end: 0;
   padding-inline-start: 0;
   display: flex;
-  margin-right: 4em;
+  margin-right: 3em;
 `
 
-const MenuItem = styled.li<{ selected: boolean }>`
+const MenuItem = styled.li<{ isSelected: boolean; color: string }>`
   padding: 1em 2em;
   text-transform: uppercase;
+  cursor: pointer;
   ${(props) =>
-    props.selected &&
+    props.isSelected &&
     css`
       background-color: ${props.theme.gray[9]};
-      color: ${props.theme.gray[0]};
+      color: ${props.color};
     `}
 `

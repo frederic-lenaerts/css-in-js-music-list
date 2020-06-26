@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react'
-import type { Album } from '../../models'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+
+import type { Album } from 'models'
 
 export interface CardProps {
   color: string
@@ -10,9 +11,22 @@ export interface CardProps {
 export default function Card(props: CardProps): ReactElement {
   return (
     <Root key={props.album.artist + props.album.name}>
-      <Background color={props.color} />
-      <Cover uri={props.album.cover}></Cover>
+      {/**
+       * Show info while the cover image is not (yet) loaded
+       */}
       <Info color={props.color}>
+        <Artist>
+          <span>{props.album.artist}</span>
+        </Artist>
+        <AlbumName>
+          <span>{props.album.name}</span>
+        </AlbumName>
+      </Info>
+      <Cover uri={props.album.cover} />
+      {/**
+       * Fade in info on hover
+       */}
+      <Info color={props.color} reveal>
         <Artist>
           <span>{props.album.artist}</span>
         </Artist>
@@ -24,22 +38,8 @@ export default function Card(props: CardProps): ReactElement {
   )
 }
 
-const Artist = styled.p`
-  height: 50%;
-  display: flex;
-  flex-direction: column;
-  margin-block-end: 0.5em;
-  text-align: center;
-  justify-content: flex-end;
-`
-
-const AlbumName = styled.p`
-  height: 50%;
-  display: flex;
-  flex-direction: column;
-  margin-block-start: 0.5em;
-  text-align: center;
-  justify-content: flex-start;
+const Root = styled.div`
+  position: relative;
 `
 
 const Cover = styled.div<{ uri: string }>`
@@ -55,20 +55,17 @@ const Cover = styled.div<{ uri: string }>`
     display: block;
     padding-bottom: 100%;
   }
+
+  ${Root}:hover & {
+    transition: all 0.5s ease-out;
+    margin: 0 16px 16px 0;
+  }
 `
 
-const Background = styled.div<{ color: string }>`
-  background-color: ${(props) => props.color};
-
-  position: absolute;
-  top: 0;
-  right: 16px;
-  bottom: 16px;
-  left: 0;
-`
-const Info = styled.div<{ color: string }>`
+const Info = styled.div<{ color: string; reveal?: boolean }>`
   color: ${(props) => props.theme.gray[9]};
   background-color: ${(props) => props.color};
+  padding: 16px;
 
   position: absolute;
   top: 0;
@@ -76,39 +73,41 @@ const Info = styled.div<{ color: string }>`
   bottom: 16px;
   left: 0;
 
-  opacity: 0;
-  z-index: 20;
+  ${(props) =>
+    props.reveal &&
+    css`
+      opacity: 0;
+      z-index: 20;
+    `}
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  ${Root}:hover & {
+    transition: all 0.5s ease-out;
+    top: 8px;
+    right: 0;
+    bottom: 0;
+    left: 8px;
+    opacity: 1;
+  }
 `
 
-const Root = styled.div`
-  position: relative;
+const Artist = styled.p`
+  height: 50%;
+  margin-block-start: 0;
+  margin-block-end: 0;
 
-  &:hover {
-    ${Background} {
-      transition: all 0.5s ease-out;
-      top: 8px;
-      right: 0;
-      bottom: 0;
-      left: 8px;
-    }
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+`
 
-    ${Info} {
-      transition: all 0.5s ease-out;
-      top: 8px;
-      right: 0;
-      bottom: 0;
-      left: 8px;
-      opacity: 1;
-    }
+const AlbumName = styled.p`
+  height: calc(50% - 1em);
+  margin-block-start: 1em;
+  margin-block-end: 0;
 
-    ${Cover} {
-      transition: all 0.5s ease-out;
-      margin: 0 16px 16px 0;
-    }
-  }
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 `
